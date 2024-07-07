@@ -1,0 +1,486 @@
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background: linear-gradient(to right, #00c6ff, #0072ff);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	color: white;
+	text-align: center;
+}
+
+.button-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 100px;
+}
+
+@keyframes ripple {
+	0% {
+		box-shadow: 0 0 0 0 transparent, 0 0 0 0 hsla(0, 0%, 100%, 0.1),
+			0 0 0 0 transparent, 0 0 0 0 hsla(0, 0%, 100%, 0), 0 0 0 0 transparent,
+			0 0 0 0 hsla(0, 0%, 100%, 0.1);
+	}
+
+	100% {
+		box-shadow: 0 0 0 20px transparent, 0 0 0 60px hsla(0, 0%, 100%, 0),
+			0 0 0 70px transparent, 0 0 0 80px hsla(0, 0%, 100%, 0),
+			0 0 0 90px transparent;
+	}
+}
+
+.container {
+	text-align: center;
+}
+
+h1 {
+	margin: 50px;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(1turn);
+	}
+}
+
+.upload_btn {
+	position: relative;
+	width: 230px;
+	height: 230px;
+	border-radius: 50%;
+	border: 0 solid transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-size: 25px;
+	font-weight: 600;
+	padding: 10px 20px;
+	padding: 0;
+	cursor: pointer;
+	overflow: hidden;
+	background: #fff;
+	color: #f5681f;
+	animation: ripple 1.2s infinite ease-out;
+}
+
+.up_span {
+	position: absolute;
+	transition: opacity 0.2s ease, transform 0.26s ease;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.upload_btn .up_icon {
+	position: absolute;
+	transition: opacity 0.2s ease, transform 0.26s ease;
+	opacity: 0;
+	transform: translateY(100px);
+}
+
+.upload_btn:hover {
+	transform: scale(1.1);
+	animation: none;
+	transition: opacity 0.2s ease, transform 0.26s ease;
+}
+
+.upload_btn:hover .up_span {
+	opacity: 0;
+	transform: translateY(-100px);
+	transition: opacity 0.2s ease, transform 0.33s ease;
+}
+
+.upload_btn:hover .up_icon {
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 0.2s ease, transform 0.33s ease;
+}
+
+.upload_btn:hover .up_border {
+	animation: spin 1s linear infinite;
+}
+
+.upload_btn:active {
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+	background: #f9f9f9;
+}
+
+.upload_btn .up_border {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	border-color: #ea8b2e #eb3f1f #f3611e #f66e1f !important;
+	border-style: solid !important;
+	border-width: 13px !important;
+	animation: spin 2.3s linear infinite;
+}
+
+
+.receiveArea,
+.sendArea {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.sendArea-content,
+.receiveArea-content {
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 600px;
+	position: relative;
+	border-radius: 10px;
+	color: black;
+	min-width: 28rem;
+
+}
+
+
+label {
+	margin-bottom: 5px;
+}
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+
+.sendForm {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.sendForm label {
+	font-weight: bold;
+	font-size: 1.2em;
+	display: block;
+	margin: 10px;
+}
+
+
+.sendForm input[type="text"],
+.sendForm input[type="file"],
+.sendForm button {
+	width: 100%;
+	padding: 10px;
+	margin: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+p {
+	margin: 10px;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+:root {
+	--primary: #2d59fa;
+	--primary-hover: #0037ff;
+	--bg: #f7f8f9;
+	--secondary: #feffff;
+	--dropzone-bg: #fff;
+	--gray: #d3d3d3;
+	--border: #edf1f3;
+	--dropzone-border: #d4dce6;
+	--headline: #211e30;
+	--text: #0a090c;
+	--primary-text: #f2f7fe;
+	--dropzone-over: #f2f7fe;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	background: var(--bg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	padding: 1rem;
+	color: var(--text);
+}
+
+*::selection {
+	background: var(--primary);
+	color: var(--primary-text);
+}
+
+.sendForm {
+	border-radius: 1rem;
+	min-width: 25rem;
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	max-width: 36rem;
+	border: 1px solid var(--border);
+	width: 100%;
+	background: var(--dropzone-bg);
+}
+
+.sendForm h2 {
+	font-size: 1.4rem;
+	margin-bottom: 0.6rem;
+	color: var(--headline);
+}
+
+.file-info {
+	font-size: 1.3rem;
+	color: var(--gray);
+}
+
+.dropzone-area {
+	box-shadow: 0 1.25em 2.18em rgb(1, 28, 71, 0.3);
+	padding: 1rem;
+	position: relative;
+	margin: 1rem;
+	min-height: 16rem;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border: 2px dashed #ccc;
+	border-radius: 1rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.dropzone-description>span {
+	margin: 5px;
+}
+
+.dropzone-description {
+	margin: 1rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+
+.dropzone-area [type="file"] {
+	cursor: pointer;
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.dropzone-area .file-upload-icon svg {
+	height: 6rem;
+	max-width: 6rem;
+	width: 100%;
+	stroke: var(--headline);
+}
+
+.dropzone-area:hover {
+	background: var(--dropzone-over);
+}
+
+.dropzone--over {
+	border: 2px solid var(--primary);
+	background: var(--dropzone-over);
+}
+
+.dropzone-actions {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dropzone-actions button {
+	flex-grow: 1;
+	min-height: 3rem;
+	font-size: 1.2rem;
+	border: none;
+	transition: background 0.3s ease;
+}
+
+.dropzone-help {
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.dropzone-actions button[type="submit"] {
+	background: var(--primary);
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	color: var(--primary-text);
+	border: none;
+	cursor: pointer;
+}
+
+.dropzone-actions button[type="submit"]:hover {
+	background: var(--primary-hover);
+}
+
+.action-buttons {
+	display: flex;
+	gap: 0.5rem;
+	max-width: 12rem;
+}
+
+/*
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+.down_button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 95px;
+  width: 370px;
+  background: #5e14c6;
+  border-radius: 55px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
+}
+.down_button.active {
+  height: 20px;
+  width: 500px;
+}
+.down_button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 100%;
+  background: #4c109f;
+  border-radius: 55px;
+  transition: all 6s ease-in-out;
+}
+.down_button.active::before {
+  animation: layer 6s ease-in-out forwards;
+}
+@keyframes layer {
+  100% {
+    left: 0%;
+  }
+}
+.down_button .down_content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  transition-delay: 0.2s;
+}
+.down_button.active .down_content {
+  transform: translateY(60px);
+}
+.down_button .down_content i,
+.down_button .down_content .down_button-text {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 500;
+}
+.down_button .down_content .down_button-text {
+  font-size: 28px;
+  margin-left: 8px;
+} */
+
+.input-with-icon {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.input-with-icon input {
+	width: 100%;
+	padding-right: 40px;
+}
+
+.input-with-icon .qr-icon {
+	position: absolute;
+	right: 10px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.qr-code {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+}
+
+#num-of-files {
+	font-weight: 400;
+	text-align: center;
+	margin: 1.25em 0 1.87em 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.dropzone-area li {
+	font-weight: 500;
+	background-color: #cfbeff;
+	color: #025bee;
+	margin-bottom: 1em;
+	padding: 1.1em 1em;
+	border-radius: 0.3em;
+	display: flex;
+	justify-content: space-between;
+}
+
+#qr-reader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
+}
