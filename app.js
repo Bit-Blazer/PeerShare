@@ -119,7 +119,7 @@ const updateFileList = (files) => {
       if (fileSize >= 1024) {
          fileSize = (fileSize / 1024).toFixed(1);
       }
-      listItem.innerHTML = `<p>${file.name}</p><p>${fileSize}  ${sizeUnit}</p>`;
+      listItem.innerHTML = `<p class="f-name">${file.name}</p><p>${fileSize}  ${sizeUnit}</p>`;
       fileList.appendChild(listItem);
    }
 };
