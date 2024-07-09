@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Show send window
 document.getElementById("sendButton").addEventListener("click", () => {
-   sendArea.style.display = "block";
+   sendArea.style.display = "flex";
 });
 
 // Show receive window and display IP
 document.getElementById("receiveButton").addEventListener("click", () => {
-   receiveArea.style.display = "block";
+   receiveArea.style.display = "flex";
 });
 
 window.addEventListener("click", (event) => {
